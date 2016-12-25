@@ -11,6 +11,8 @@
 <body>
   <h1>Programming languages<h1>
 
+    <ul id="Sort"></ul>
+
   <script>
     console.log("Starting!");
 
@@ -18,7 +20,15 @@
 
     var list = document.getElementById("Sort");
 
-    lang.map((l)=> {
+    const shuffle = (toShuffle) => {
+      for (var i = toShuffle.length; i; i--) {
+        let j = Math.floor(Math.random() * i);
+        [toShuffle[i - 1], toShuffle[j]] = [toShuffle[j], toShuffle[i - 1]];
+      }
+      return toShuffle;
+    };
+
+    shuffle(lang.concat(lang)).map((l)=> {
       var img = document.createElement("img");
       img.height = 50;
       img.src = l;
