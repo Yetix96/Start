@@ -13,6 +13,17 @@
 
     <ul id="Sort"></ul>
 
+  <style type="text/css">
+    .with-border {
+      opacity: 1;
+      border: 5px solid crimson;
+    }
+    
+    .invisible {
+        opacity: 0;
+    }
+  </style>
+
   <script>
     console.log("Starting!");
 
@@ -28,12 +39,23 @@
       return toShuffle;
     };
 
+    const click = (arg) => {
+      if(arg.target.className === "invisible") {
+        arg.target.className = "";
+      };
+    };
+
     shuffle(lang.concat(lang)).map((l)=> {
       var img = document.createElement("img");
       img.height = 50;
       img.src = l;
+      img.className = "invisible";
+      img.onclick = click;
 
       var li = document.createElement("li");
+      li.className = "with-border";
+
+      //li.onclick = click;
       li.appendChild(img);
       list.appendChild(li);
     });
